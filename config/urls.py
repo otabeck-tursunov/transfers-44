@@ -10,6 +10,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home_view, name='home'),
     path('clubs/', views.clubs_view, name='clubs'),
+    path('clubs/<int:pk>/', views.club_details_view, name='club-details'),
+    path('latest-transfers/', views.latest_transfers_view, name='latest-transfers'),
+    path('players/', views.players_view, name='players'),
+    path('tryouts/', views.tryouts_view, name='tryouts'),
+    path('u-20-players/', views.u20_players_view, name='u-20'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

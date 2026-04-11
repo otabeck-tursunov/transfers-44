@@ -54,7 +54,7 @@
             <h3><a href="./clubs.html">CLUBS</a></h3>
             <h3><a href="./latest-transfers.html">LATEST TRANSFERS</a></h3>
             <h3><a href="./players.html">PLAYERS</a></h3>
-            <h3><a href="./U-20 players.html">U-20 PLAYERS</a></h3>
+            <h3><a href="u-20.html">U-20 PLAYERS</a></h3>
             <h3><a href="./tryouts.html">TRYOUTS</a></h3>
             <h3><a href="./stats.html">STATS</a></h3>
             <h3><a href="./about.html">ABOUT US</a></h3>
@@ -66,10 +66,10 @@
         </div>
         <div class="links">
             <div><a href="{% url 'clubs' %}">CLUBS</a></div>
-            <div><a href="./latest-transfers.html">LATEST TRANSFERS</a></div>
-            <div><a href="./players.html">PLAYERS</a></div>
-            <div><a href="./U-20 players.html">U-20 PLAYERS</a></div>
-            <div><a href="./tryouts.html">TRYOUTS</a></div>
+            <div><a href="{% url 'latest-transfers' %}">LATEST TRANSFERS</a></div>
+            <div><a href="{% url 'players' %}">PLAYERS</a></div>
+            <div><a href="{% url 'u-20' %}">U-20 PLAYERS</a></div>
+            <div><a href="{% url 'tryouts' %}">TRYOUTS</a></div>
             <div><a href="./stats.html">STATS</a></div>
             <div><a href="./about.html">ABOUT US</a></div>
         </div>
@@ -78,22 +78,14 @@
         <h2 id="title">Clubs by country</h2>
         <div class="country">
             <div>
-                <h3><a href="./countries/england.html">England</a> <br/></h3>
-                <h3><a href="./countries/italy.html">Italy</a> <br/></h3>
-                <h3><a href="./countries/france.html">France</a> <br/></h3>
-                <h3>
-                    <a href="./countries/netherlands.html">Netherlands</a> <br/>
-                </h3>
-                <h3><a href="./countries/ukraine.html">Ukraine</a> <br/></h3>
-                <h3><a href="./countries/argentina.html">Argentina</a> <br/></h3>
+                {% for country in cl %}
+                    <h3><a href="{% url 'clubs' %}?country={{ country.name }}">{{ country.name }}</a> <br/></h3>
+                {% endfor %}
             </div>
             <div>
-                <h3><a href="./countries/spain.html">Spain</a> <br/></h3>
-                <h3><a href="./countries/germany.html">Germany</a> <br/></h3>
-                <h3><a href="./countries/portugal.html">Portugal</a> <br/></h3>
-                <h3><a href="./countries/brazil.html">Brazil</a> <br/></h3>
-                <h3><a href="./countries/russia.html">Russia</a> <br/></h3>
-                <h3><a href="./countries/other.html">Other</a> <br/></h3>
+                {% for country in cr %}
+                    <h3><a href="{% url 'clubs' %}?country={{ country.name }}">{{ country.name }}</a> <br/></h3>
+                {% endfor %}
             </div>
         </div>
     </div>
