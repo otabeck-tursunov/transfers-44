@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="nav">
+        <h2>– TOP-50 CLUBS BY EXPENDITURE –</h2>
+    </div>
+
+    <div class="latest-transfers">
+        <table class="top-players" style="width: 100%; margin-top: 30px; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th style="padding: 14px 10px; text-align: left; border-bottom: 2px solid #ddd; width: 60px;">#</th>
+                    <th style="padding: 14px 10px; text-align: left; border-bottom: 2px solid #ddd;">Club</th>
+                    <th style="padding: 14px 10px; text-align: right; border-bottom: 2px solid #ddd; width: 220px;">
+                        Expenditures, mill. euro
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for club in clubs %}
+                    <tr>
+                        <td style="padding: 12px 10px; border-bottom: 1px solid #f0f0f0;">
+                            {{ forloop.counter }}
+                        </td>
+
+                        <td style="padding: 12px 10px; border-bottom: 1px solid #f0f0f0;">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                {% if club.logo %}
+                                    <img src="{{ club.logo.url }}"
+                                         alt="{{ club.name }}"
+                                         style="width: 28px; height: 28px; object-fit: contain;">
+                                {% endif %}
+                                <span>{{ club.name }}</span>
+                            </div>
+                        </td>
+
+                        <td style="padding: 12px 10px; text-align: right; border-bottom: 1px solid #f0f0f0; font-weight: 600;">
+                            {{ club.total_expenditure|floatformat:2 }}
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="3" style="padding: 20px; text-align: center;">
+                            No club expenditure data available.
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <p style="margin-top: 18px; color: #666;">
+            This table shows the top 50 clubs ranked by total transfer expenditure.
+        </p>
+    </div>
+{% endblock %}
